@@ -15,7 +15,8 @@ class Command(BaseCommand):
             first_name='Admin',
             last_name='MailingCenter',
             is_staff=True,
-            is_superuser=True
+            is_superuser=True,
+            is_active=True,
         )
         user.set_password('140386Odd')
         user.save()
