@@ -1,5 +1,5 @@
 from apscheduler.schedulers.background import BackgroundScheduler
-from .jobs import send_mailings
+from logic_work.logic_work import send_mailings
 
 
 def start():
