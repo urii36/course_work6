@@ -2,6 +2,7 @@ from random import sample
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
+
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, DeleteView, UpdateView
@@ -19,7 +20,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['count_mailing'] = len(Mailing.objects.all())
+        context['count_mailing'] = Mailing.objects.count()
         active_mailings_count = Mailing.objects.filter(status__in=['created', 'started']).count()
         context['active_mailings_count'] = active_mailings_count
         unique_clients_count = Client.objects.filter(is_active=True).distinct().count()
